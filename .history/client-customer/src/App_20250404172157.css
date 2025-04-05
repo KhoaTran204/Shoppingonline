@@ -1,0 +1,352 @@
+/* ========================
+   RESET TOÀN CỤC
+   ======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* ========================
+     BODY LAYOUT CHUNG
+     ======================== */
+.body-customer,
+.body-admin {
+  width: 100vw; /* đảm bảo full chiều ngang */
+  max-width: 1150px; /* giới hạn tối đa nếu cần */
+  min-height: 100vh; /* luôn chiếm đủ chiều cao màn hình */
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+/* ========================
+     CÁC KIỂU HIỂN THỊ CƠ BẢN
+     ======================== */
+div.inline {
+  display: inline-block;
+}
+
+figure.caption-right {
+  display: flex;
+  align-items: center;
+}
+
+.align-center {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.align-valign-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 20px 20px 20px;
+  border: 1px solid black;
+}
+
+.text-center {
+  text-align: center;
+}
+
+span.link {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+/* ========================
+     MENU (menu.css)
+     ======================== */
+div.border-bottom {
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+
+div.float-left {
+  float: left;
+}
+
+div.float-right {
+  float: right;
+}
+
+div.float-clear {
+  clear: both;
+}
+
+ul.menu {
+  margin: 0;
+  padding: 0;
+}
+
+li.menu {
+  display: inline;
+  margin-right: 20px;
+  text-transform: uppercase;
+}
+
+form.search {
+  margin: 0;
+}
+
+input.keyword {
+  width: 110px;
+}
+
+/* ========================
+     DATATABLE (datatable.css)
+     ======================== */
+.datatable {
+  text-align: center;
+  border-collapse: collapse;
+}
+
+/* Header */
+tr:first-child.datatable {
+  background-color: #ffcc00;
+}
+
+/* Even rows */
+tr:not(:first-child):nth-child(even).datatable {
+  background-color: #f5f5f5;
+}
+
+/* Odd rows */
+tr:not(:first-child):nth-child(odd).datatable {
+  background-color: #ffeeaa;
+}
+
+/* Hover effect */
+tr:not(:first-child):hover.datatable {
+  background-color: #dcfcfc;
+  cursor: pointer;
+}
+
+/* ========================
+     NAVBAR CHÍNH
+     ======================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.navbar:hover {
+  background-color: #f8f8f8;
+}
+
+/* Navbar menu items */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline;
+  padding: 5px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Navbar links */
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #007aff;
+  text-decoration: underline;
+}
+
+/* Navbar brand */
+.navbar .brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.navbar .brand:hover {
+  color: #007aff;
+}
+
+/* ========================
+     THANH TÌM KIẾM (Search bar)
+     ======================== */
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 8px 12px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.search-bar:hover {
+  background-color: #f1f1f1;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 25px;
+  width: 200px;
+  transition: width 0.3s ease;
+}
+
+.search-bar input:focus {
+  width: 250px;
+}
+
+.search-bar button {
+  background-color: transparent;
+  border: none;
+  color: #007aff;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.search-bar button:hover {
+  color: #0056b3;
+}
+
+/* ========================
+     RESPONSIVE CHO MOBILE
+     ======================== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .navbar li {
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .search-bar button {
+    margin-left: 0;
+  }
+
+  .body-customer,
+  .body-admin {
+    padding: 0 10px;
+  }
+
+  /* ========================
+       INFORM COMPONENT
+       ======================== */
+  .inform-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #f0f0f0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .inform-navbar:hover {
+    background-color: #f8f8f8;
+  }
+
+  .inform-left,
+  .inform-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .inform-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .inform-link:hover {
+    color: #007aff;
+    text-decoration: underline;
+  }
+
+  .cart-icon {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff4500;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+}

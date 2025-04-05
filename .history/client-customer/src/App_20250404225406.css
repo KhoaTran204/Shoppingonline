@@ -1,0 +1,377 @@
+/* styles.css */
+
+.body-customer {
+  width: 100%;
+  height: fit-content;
+  margin: 0px auto;
+}
+
+.body-admin {
+  width: fit-content;
+  height: fit-content;
+  margin: 0px auto;
+}
+
+div.inline {
+  display: inline-block;
+}
+
+figure.caption-right {
+  display: flex;
+  align-items: center;
+}
+
+.align-center {
+  width: fit-content;
+  margin: 0px auto;
+}
+
+.align-valign-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+}
+
+.text-center {
+  text-align: center;
+}
+
+span.link {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+/* menu.css */
+div.border-bottom {
+  border-bottom: 1px solid black;
+  padding: 10px 0px 10px 0px;
+}
+
+div.float-left {
+  float: left;
+}
+
+div.float-right {
+  float: right;
+}
+
+div.float-clear {
+  clear: both;
+}
+
+ul.menu {
+  margin: 0px;
+  padding: 0px;
+}
+
+li.menu {
+  display: inline;
+  margin-right: 20px;
+  text-transform: uppercase;
+}
+
+form.search {
+  margin: 0px;
+}
+
+input.keyword {
+  width: 110px;
+}
+
+/* datatable.css */
+.datatable {
+  text-align: center;
+  border-collapse: collapse;
+}
+
+/* header */
+tr:first-child.datatable {
+  background-color: #ffcc00;
+}
+
+/* even rows, except header */
+tr:not(:first-child):nth-child(even).datatable {
+  background-color: #f5f5f5;
+}
+
+/* odd rows, except header */
+tr:not(:first-child):nth-child(odd).datatable {
+  background-color: #ffeeaa;
+}
+
+/* except header */
+tr:not(:first-child):hover.datatable {
+  background-color: #dcfcfc;
+  cursor: pointer;
+}
+
+/* Navbar Styles */
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #f0f0f0; /* Thêm đường viền dưới nhẹ để navbar nổi bật */
+  border-radius: 8px; /* Thêm bo góc để navbar mềm mại hơn */
+  transition: all 0.3s ease; /* Hiệu ứng chuyển động khi di chuột */
+}
+
+.navbar:hover {
+  background-color: #f8f8f8; /* Chuyển màu nền khi hover */
+}
+
+/* Menu Items */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* Cách các item menu rộng hơn */
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline;
+  padding: 5px 15px; /* Thêm khoảng cách cho mỗi item */
+  border-radius: 5px; /* Bo góc cho mỗi item */
+  transition: background-color 0.3s ease; /* Hiệu ứng khi di chuột */
+}
+
+.navbar li:hover {
+  background-color: #f0f0f0; /* Màu nền khi hover trên mỗi item */
+}
+
+/* Navbar Links */
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #007aff; /* Màu thay đổi khi hover */
+  text-decoration: underline; /* Thêm gạch chân khi hover */
+}
+
+/* Navbar Branding */
+.navbar .brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.navbar .brand:hover {
+  color: #007aff;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 30px; /* Bo góc thanh tìm kiếm */
+  padding: 8px 12px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.search-bar:hover {
+  background-color: #f1f1f1; /* Chuyển màu nền khi hover */
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 25px;
+  width: 200px; /* Tăng chiều rộng của input */
+  transition: width 0.3s ease; /* Hiệu ứng khi focus vào input */
+}
+
+.search-bar input:focus {
+  width: 250px; /* Mở rộng khi focus */
+}
+
+.search-bar button {
+  background-color: transparent;
+  border: none;
+  color: #007aff;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.search-bar button:hover {
+  color: #0056b3;
+}
+
+/* Add responsiveness for mobile devices */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-bar input {
+    width: 150px;
+  }
+
+  .search-bar button {
+    margin-left: 0;
+  }
+
+  /* Inform Component */
+  /* styles/Inform.css */
+  .inform-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #f0f0f0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .inform-navbar:hover {
+    background-color: #f8f8f8;
+  }
+
+  .inform-left,
+  .inform-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .inform-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .inform-link:hover {
+    color: #007aff;
+    text-decoration: underline;
+  }
+
+  .cart-count {
+    font-weight: bold;
+    color: #ff4500;
+  }
+  .cart-icon {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    text-decoration: none;
+    color: black; /* Đảm bảo màu biểu tượng hiển thị đúng */
+  }
+
+  .cart-count {
+    position: absolute;
+    top: -5px; /* Điều chỉnh vị trí của chấm đỏ */
+    right: -5px; /* Đẩy chấm đỏ ra ngoài giỏ hàng */
+    font-weight: bold;
+    color: #fff; /* Màu chữ trắng để tương phản rõ ràng với nền đỏ */
+    background-color: #ff4500; /* Màu nền đỏ sáng */
+    border-radius: 50%;
+    width: 20px; /* Điều chỉnh lại kích thước */
+    height: 20px; /* Điều chỉnh lại kích thước */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px; /* Giảm kích thước chữ để chấm số vừa đủ */
+  }
+  /* General styling */
+  .product-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+    scroll-behavior: smooth;
+  }
+
+  .product-scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-scroll-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  div.inline {
+    display: flex; /* Dùng flexbox thay vì inline-block */
+    flex-wrap: wrap; /* Đảm bảo các phần tử không bị chồng lên nhau */
+    justify-content: center; /* Căn giữa phần tử */
+    margin-right: 20px;
+    vertical-align: top;
+  }
+
+  figure.caption-right {
+    display: flex;
+    align-items: center;
+  }
+
+  div.inline figure {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    margin: 10px; /* Thêm margin cho phần tử để không bị chồng lên nhau */
+  }
+
+  div.inline figure img {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+  }
+
+  figcaption {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  div.inline figure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    div.inline figure {
+      width: 250px;
+      height: 350px;
+    }
+
+    div.inline figure img {
+      width: 70%;
+    }
+  }
+}

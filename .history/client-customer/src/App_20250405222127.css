@@ -1,0 +1,497 @@
+/* ========================= */
+/* 1. Cấu hình chung */
+/* ========================= */
+
+.body-customer {
+  width: 100%;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+.body-admin {
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+div.inline {
+  display: inline-block;
+}
+
+figure.caption-right {
+  display: flex;
+  align-items: center;
+}
+
+.align-center {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.align-valign-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 20px 20px;
+  border: 1px solid black;
+}
+
+.text-center {
+  text-align: center;
+}
+
+span.link {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+/* ========================= */
+/* 2. Menu Styles */
+/* ========================= */
+
+div.border-bottom {
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+
+div.float-left {
+  float: left;
+}
+
+div.float-right {
+  float: right;
+}
+
+div.float-clear {
+  clear: both;
+}
+
+ul.menu {
+  margin: 0;
+  padding: 0;
+}
+
+li.menu {
+  display: inline;
+  margin-right: 20px;
+  text-transform: uppercase;
+}
+
+form.search {
+  margin: 0;
+}
+
+input.keyword {
+  width: 110px;
+}
+
+/* ========================= */
+/* 3. Datatable Styles */
+/* ========================= */
+
+.datatable {
+  text-align: center;
+  border-collapse: collapse;
+}
+
+/* Header row */
+tr:first-child.datatable {
+  background-color: #ffcc00;
+}
+
+/* Even rows */
+tr:not(:first-child):nth-child(even).datatable {
+  background-color: #f5f5f5;
+}
+
+/* Odd rows */
+tr:not(:first-child):nth-child(odd).datatable {
+  background-color: #ffeeaa;
+}
+
+/* Hover effect */
+tr:not(:first-child):hover.datatable {
+  background-color: #dcfcfc;
+  cursor: pointer;
+}
+
+/* ========================= */
+/* 4. Navbar Styles */
+/* ========================= */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #f0f0f0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar:hover {
+  background-color: #f8f8f8;
+}
+
+/* Menu Items */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline;
+  padding: 5px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Navbar Links */
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #007aff;
+  text-decoration: underline;
+}
+
+/* Navbar Branding */
+.navbar .brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.navbar .brand:hover {
+  color: #007aff;
+}
+
+/* ========================= */
+/* 5. Search Bar */
+/* ========================= */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 8px 12px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.search-bar:hover {
+  background-color: #f1f1f1;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 25px;
+  width: 200px;
+  transition: width 0.3s ease;
+}
+
+.search-bar input:focus {
+  width: 250px;
+}
+
+.search-bar button {
+  background-color: transparent;
+  border: none;
+  color: #007aff;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.search-bar button:hover {
+  color: #0056b3;
+}
+
+/* ========================= */
+/* 6. Product Scroll Container */
+/* ========================= */
+
+.product-scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+}
+
+.product-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.product-scroll-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+div.inline {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: top;
+}
+
+/* ========================= */
+/* 7. Product Card Styles */
+/* ========================= */
+
+div.inline figure {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Product Image */
+div.inline figure img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  margin: 10px 0;
+  display: block;
+}
+
+/* Product Name */
+/* Cập nhật phần .align-left chỉ căn chỉnh giá và sao */
+.align-left {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 20px;
+  display: block; /* Chỉ cần hiển thị tên sản phẩm theo dạng block */
+}
+
+/* Cập nhật phần chứa giá và sao */
+/* Cập nhật phần chứa giá và sao */
+.align-left .price-stars-container {
+  display: flex;
+  /* Căn giữa giá và sao */
+  align-items: center; /* Căn giữa theo chiều dọc */
+}
+.product-price {
+  margin-top: 10px;
+  color: red; /* Giữ màu đỏ cho giá tiền */
+  margin-right: auto; /* Thêm khoảng cách giữa giá và ngôi sao */
+}
+
+/* Đảm bảo các ngôi sao không có khoảng cách giữa chúng */
+.stars {
+  display: flex;
+  margin-top: 10px;
+  justify-content: right;
+  font-size: 18px; /* Loại bỏ khoảng cách giữa các ngôi sao */
+  /* Đảm bảo không có khoảng cách ngoài */
+}
+
+/* Hover Effect */
+div.inline figure:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================= */
+/* 8. Cart Icon */
+/* ========================= */
+
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+}
+
+/* Cart Count Badge */
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #ff4500;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* ========================= */
+/* 9. Responsive Design */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-bar input {
+    width: 150px;
+  }
+
+  div.inline figure {
+    width: 250px;
+    height: 350px;
+  }
+}
+/* Product-Detail */
+/* ========================= */
+/* 10. Product Detail Page Styles */
+/* ========================= */
+
+.product-detail-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 30px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.product-detail-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-image-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.productdtdt-image {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-info-container {
+  flex: 1;
+  min-width: 300px;
+}
+
+.product-info-form {
+  width: 100%;
+}
+
+.product-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  color: #444;
+}
+
+.product-info-table td {
+  padding: 12px 8px;
+  vertical-align: middle;
+}
+
+.product-info-table td:first-child {
+  font-weight: 600;
+  width: 120px;
+  color: #333;
+}
+
+.quantity-input {
+  width: 60px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.quantity-input:focus {
+  border-color: #007aff;
+}
+
+.add-to-cart-btn {
+  background-color: #007aff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #005bb5;
+}
+.productdt-name {
+  font-style: oblique;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 30px;
+}
+.product-id {
+  font-style: oblique;
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.productdt-price {
+  color: #e53935;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .product-image-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
