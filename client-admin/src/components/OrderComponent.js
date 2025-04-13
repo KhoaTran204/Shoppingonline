@@ -8,104 +8,183 @@ class Order extends Component {
     super(props);
     this.state = {
       orders: [],
-      order: null
+      order: null,
+      loading: true
     };
   }
+  
+  componentDidMount() {
+    this.apiGetOrders();
+    // Loading effect
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 800);
+  }
+  
   render() {
-    const orders = this.state.orders.map((item) => {
+    const { orders, order, loading } = this.state;
+    
+    const orderRows = orders.map((item) => {
       return (
-        <tr key={item._id} className="datatable" onClick={() => this.trItemClick(item)}>
+        <tr key={item._id} onClick={() => this.trItemClick(item)}>
           <td>{item._id}</td>
           <td>{new Date(item.cdate).toLocaleString()}</td>
           <td>{item.customer.name}</td>
           <td>{item.customer.phone}</td>
-          <td>{item.total}</td>
-          <td>{item.status}</td>
+          <td>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.total)}</td>
           <td>
-            {item.status === 'PENDING' ?
-              <div><span className="link" onClick={() => this.lnkApproveClick(item._id)}>APPROVE</span> || <span className="link" onClick={() => this.lnkCancelClick(item._id)}>CANCEL</span></div>
-              : <div />}
+            <span className={`status-badge ${item.status === 'APPROVED' ? 'active' : item.status === 'CANCELED' ? 'inactive' : 'pending'}`}>
+              <i className={`fas ${item.status === 'APPROVED' ? 'fa-check-circle' : item.status === 'CANCELED' ? 'fa-times-circle' : 'fa-clock'}`}></i> {item.status}
+            </span>
+          </td>
+          <td>
+            <div className="table-actions">
+              {item.status === 'PENDING' ? (
+                <>
+                  <button className="action-btn view" onClick={(e) => { e.stopPropagation(); this.lnkApproveClick(item._id); }}>
+                    <i className="fas fa-check"></i>
+                  </button>
+                  <button className="action-btn delete" onClick={(e) => { e.stopPropagation(); this.lnkCancelClick(item._id); }}>
+                    <i className="fas fa-times"></i>
+                  </button>
+                  <button className="action-btn edit" onClick={(e) => { e.stopPropagation(); window.location.href = `mailto:${item.customer.email}`; }}>
+                    <i className="fas fa-envelope"></i>
+                  </button>
+                </>
+              ) : (
+                <button className="action-btn edit" onClick={(e) => { e.stopPropagation(); window.location.href = `mailto:${item.customer.email}`; }}>
+                  <i className="fas fa-envelope"></i>
+                </button>
+              )}
+            </div>
           </td>
         </tr>
       );
     });
-    if (this.state.order) {
-      var items = this.state.order.items.map((item, index) => {
+    
+    let orderItems = [];
+    if (order) {
+      orderItems = order.items.map((item, index) => {
         return (
-          <tr key={item.product._id} className="datatable">
+          <tr key={item.product._id}>
             <td>{index + 1}</td>
             <td>{item.product._id}</td>
             <td>{item.product.name}</td>
-            <td><img src={"data:image/jpg;base64," + item.product.image} width="70px" height="70px" alt="" /></td>
-            <td>{item.product.price}</td>
+            <td><img src={"data:image/jpg;base64," + item.product.image} width="60px" height="60px" alt="" style={{borderRadius: '8px', objectFit: 'cover'}} /></td>
+            <td>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.product.price)}</td>
             <td>{item.quantity}</td>
-            <td>{item.product.price * item.quantity}</td>
+            <td>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.product.price * item.quantity)}</td>
           </tr>
         );
       });
     }
+    
     return (
       <div>
-        <div className="align-center">
-          <h2 className="text-center">ORDER LIST</h2>
-          <table className="datatable" border="1">
-            <tbody>
-              <tr className="datatable">
-                <th>ID</th>
-                <th>Creation date</th>
-                <th>Cust.name</th>
-                <th>Cust.phone</th>
-                <th>Total</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-              {orders}
-            </tbody>
-          </table>
-        </div>
-        {this.state.order ?
-          <div className="align-center">
-            <h2 className="text-center">ORDER DETAIL</h2>
-            <table className="datatable" border="1">
+        <div className="data-table-container">
+          <div className="data-table-header">
+            <div className="data-table-title">
+              <i className="fas fa-shopping-cart"></i> Order Management
+            </div>
+            <div className="data-table-actions">
+              <button className="btn btn-primary">
+                <i className="fas fa-sync-alt"></i> Refresh
+              </button>
+            </div>
+          </div>
+          
+          {loading ? (
+            <div className="loading-skeleton" style={{height: '300px'}}></div>
+          ) : (
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Date Created</th>
+                  <th>Customer Name</th>
+                  <th>Phone</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
               <tbody>
-                <tr className="datatable">
-                  <th>No.</th>
-                  <th>Prod.ID</th>
-                  <th>Prod.name</th>
+                {orderRows}
+              </tbody>
+            </table>
+          )}
+        </div>
+        
+        {order && (
+          <div className="data-table-container">
+            <div className="data-table-header">
+              <div className="data-table-title">
+                <i className="fas fa-info-circle"></i> Order Details #{order._id}
+              </div>
+              <div className="data-table-actions">
+                <button className="btn btn-email" onClick={() => window.location.href = `mailto:${order.customer.email}`}>
+                  <i className="fas fa-envelope"></i> Send Email
+                </button>
+              </div>
+            </div>
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Product ID</th>
+                  <th>Product Name</th>
                   <th>Image</th>
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Amount</th>
                 </tr>
-                {items}
+              </thead>
+              <tbody>
+                {orderItems}
               </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan="6" style={{textAlign: 'right', fontWeight: 'bold'}}>Total:</td>
+                  <td style={{fontWeight: 'bold'}}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.total)}</td>
+                </tr>
+              </tfoot>
             </table>
           </div>
-          : <div />}
+        )}
       </div>
     );
   }
-  componentDidMount() {
-    this.apiGetOrders();
-  }
+  
   // event-handlers
   trItemClick(item) {
     this.setState({ order: item });
   }
+  
   lnkApproveClick(id) {
-    this.apiPutOrderStatus(id, 'APPROVED');
+    if (window.confirm('Are you sure you want to approve this order?')) {
+      this.apiPutOrderStatus(id, 'APPROVED');
+    }
   }
+  
   lnkCancelClick(id) {
-    this.apiPutOrderStatus(id, 'CANCELED');
+    if (window.confirm('Are you sure you want to cancel this order?')) {
+      this.apiPutOrderStatus(id, 'CANCELED');
+    }
   }
+  
   // apis
   apiGetOrders() {
+    this.setState({ loading: true });
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.get('/api/admin/orders', config).then((res) => {
       const result = res.data;
-      this.setState({ orders: result });
+      this.setState({ orders: result, loading: false });
+    }).catch(err => {
+      this.setState({ loading: false });
+      console.error('Error loading orders:', err);
     });
   }
+  
   apiPutOrderStatus(id, status) {
     const body = { status: status };
     const config = { headers: { 'x-access-token': this.context.token } };
@@ -114,9 +193,10 @@ class Order extends Component {
       if (result) {
         this.apiGetOrders();
       } else {
-        alert('Error! An error occurred. Please try again later.');
+        alert('Error! An issue occurred. Please try again later.');
       }
     });
   }
 }
+
 export default Order;

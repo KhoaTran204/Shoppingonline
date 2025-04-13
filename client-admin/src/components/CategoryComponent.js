@@ -9,55 +9,115 @@ class Category extends Component {
     super(props);
     this.state = {
       categories: [],
-      itemSelected: null
+      itemSelected: null,
+      loading: true,
+      showForm: false
     };
   }
+  
+  componentDidMount() {
+    this.apiGetCategories();
+    // Loading effect
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 800);
+  }
+  
   render() {
-    const cates = this.state.categories.map((item) => {
+    const { categories, itemSelected, loading, showForm } = this.state;
+    
+    const cateRows = categories.map((item) => {
       return (
-        <tr key={item._id} className="datatable" onClick={() => this.trItemClick(item)}>
+        <tr key={item._id} onClick={() => this.trItemClick(item)}>
           <td>{item._id}</td>
-          <td>{item.name}</td>
+          <td>
+            <span className="status-badge active">
+              <i className="fas fa-tag"></i> {item.name}
+            </span>
+          </td>
+          <td>
+            <div className="table-actions">
+              <button className="action-btn edit" onClick={(e) => { e.stopPropagation(); this.trItemClick(item); }}>
+                <i className="fas fa-edit"></i>
+              </button>
+            </div>
+          </td>
         </tr>
       );
     });
+    
     return (
       <div>
-        <div className="float-left">
-          <h2 className="text-center">CATEGORY LIST</h2>
-          <table className="datatable" border="1">
-            <tbody>
-              <tr className="datatable">
-                <th>ID</th>
-                <th>Name</th>
-              </tr>
-              {cates}
-            </tbody>
-          </table>
+        <div className="data-table-container">
+          <div className="data-table-header">
+            <div className="data-table-title">
+              <i className="fas fa-tags"></i> Category Management
+            </div>
+            <div className="data-table-actions">
+              <button 
+                className="btn btn-success btn-add" 
+                onClick={() => {
+                  this.setState({ 
+                    itemSelected: { _id: '', name: '' },
+                    showForm: true
+                  });
+                }}
+              >
+                <i className="fas fa-plus-circle"></i> Add Category
+              </button>
+            </div>
+          </div>
+          
+          {loading ? (
+            <div className="loading-skeleton" style={{height: '200px'}}></div>
+          ) : (
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Category Name</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cateRows}
+              </tbody>
+            </table>
+          )}
         </div>
-        <div className="inline" />
-        <CategoryDetail item={this.state.itemSelected} updateCategories={this.updateCategories} />
-        <div className="float-clear" />
+        
+        {(showForm || itemSelected) && (
+          <CategoryDetail 
+            item={itemSelected} 
+            updateCategories={this.updateCategories} 
+            onClose={() => this.setState({ showForm: false, itemSelected: null })}
+          />
+        )}
       </div>
     );
   }
-  componentDidMount() {
-    this.apiGetCategories();
-  }
+  
   updateCategories = (categories) => { // arrow-function
     this.setState({ categories: categories });
   }
+  
   // event-handlers
   trItemClick(item) {
-    this.setState({ itemSelected: item });
+    this.setState({ itemSelected: item, showForm: true });
   }
+  
   // apis
   apiGetCategories() {
+    this.setState({ loading: true });
     const config = { headers: { 'x-access-token': this.context.token } };
     axios.get('/api/admin/categories', config).then((res) => {
       const result = res.data;
-      this.setState({ categories: result });
+      this.setState({ categories: result, loading: false });
+    }).catch(err => {
+      this.setState({ loading: false });
+      console.error('Error loading categories:', err);
     });
   }
 }
+
 export default Category;

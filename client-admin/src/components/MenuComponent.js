@@ -4,29 +4,76 @@ import MyContext from '../contexts/MyContext';
 
 class Menu extends Component {
   static contextType = MyContext; // using this.context to access global state
+  
   render() {
     return (
-      <div className="border-bottom">
-        <div className="float-left">
-          <ul className="menu">
-            <li className="menu"><Link to='/admin/home'>Home</Link></li>
-            <li className="menu"><Link to='/admin/category'>Category</Link></li>
-            <li className="menu"><Link to='/admin/product'>Product</Link></li>
-            <li className="menu"><Link to='/admin/order'>Order</Link></li>
-            <li className="menu"><Link to='/admin/customer'>Customer</Link></li>
-          </ul>
+      <nav className="admin-sidebar">
+        {/* Logo/Brand */}
+        <div className="sidebar-brand">
+          <h2><i className="fas fa-store"></i> Admin</h2>
         </div>
-        <div className="float-right">
-          Hello <b>{this.context.username}</b> | <Link to='/admin/home' onClick={() => this.lnkLogoutClick()}>Logout</Link>
+        
+        {/* User Profile */}
+        <div className="sidebar-profile">
+          <div className="profile-avatar">
+            <i className="fas fa-user-circle"></i>
+          </div>
+          <div className="profile-info">
+            <p className="profile-name">{this.context.username}</p>
+            <p className="profile-role">Administrator</p>
+          </div>
         </div>
-        <div className="float-clear" />
-      </div>
+        
+        {/* Navigation */}
+        <ul className="sidebar-menu">
+          <li className="menu-item">
+            <Link to='/admin/home'>
+              <i className="fas fa-home"></i>
+              <span>Home</span>
+            </Link>
+          </li>
+          <li className="menu-item">
+            <Link to='/admin/category'>
+              <i className="fas fa-tags"></i>
+              <span>Categories</span>
+            </Link>
+          </li>
+          <li className="menu-item">
+            <Link to='/admin/product'>
+              <i className="fas fa-box"></i>
+              <span>Products</span>
+            </Link>
+          </li>
+          <li className="menu-item">
+            <Link to='/admin/order'>
+              <i className="fas fa-shopping-cart"></i>
+              <span>Orders</span>
+            </Link>
+          </li>
+          <li className="menu-item">
+            <Link to='/admin/customer'>
+              <i className="fas fa-users"></i>
+              <span>Customers</span>
+            </Link>
+          </li>
+        </ul>
+        
+        {/* Logout */}
+        <div className="sidebar-footer">
+          <Link to='/admin/home' onClick={() => this.lnkLogoutClick()}>
+            <i className="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </Link>
+        </div>
+      </nav>
     );
   }
+  
   // event-handlers
   lnkLogoutClick() {
     this.context.setToken('');
     this.context.setUsername('');
   }
 }
+
 export default Menu;
