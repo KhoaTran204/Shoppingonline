@@ -82,11 +82,11 @@ class Home extends Component {
         <div className="align-center">
           <h1 className="text-center">RUBIES</h1>
           <img
-            src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/483525933_1214184293403375_1580403919101574731_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Re0hZORff2cQ7kNvwFKVyWi&_nc_oc=Adn28q_9HyA96dozeUt19blDcRBCLoL-tLWClURk5vBpNA0AQpthY-YVOQRLkl6Ejqz9pr0rCl6gGucPyRmc9LzB&_nc_zt=23&_nc_ht=scontent.fsgn2-6.fna&_nc_gid=Du8DfpsWFkC-DZgZvz3DVw&oh=00_AfFvj8pslDjF_VuPP6lD1GtAhRipFJfG9r3XCDzvT7oAtg&oe=6801BF91"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-gB7ka5Vmn243AXqYKIIPaCoW5pMenNzS9w&s"
             alt="Banner"
             style={{
               width: "100%",
-              maxHeight: "1000px",
+              maxHeight: "10000px",
               objectFit: "cover",
               borderRadius: "10px",
             }}

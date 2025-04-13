@@ -80,33 +80,29 @@ class Home extends Component {
       <div>
         {/* Tiêu đề và ảnh bìa */}
         <div className="align-center">
-          <h1 className="text-center">RUBIES</h1>
+          <h1 className="text-center">
+            RUBIES
+          </h1>
           <img
-            src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/483525933_1214184293403375_1580403919101574731_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=Re0hZORff2cQ7kNvwFKVyWi&_nc_oc=Adn28q_9HyA96dozeUt19blDcRBCLoL-tLWClURk5vBpNA0AQpthY-YVOQRLkl6Ejqz9pr0rCl6gGucPyRmc9LzB&_nc_zt=23&_nc_ht=scontent.fsgn2-6.fna&_nc_gid=Du8DfpsWFkC-DZgZvz3DVw&oh=00_AfFvj8pslDjF_VuPP6lD1GtAhRipFJfG9r3XCDzvT7oAtg&oe=6801BF91"
+            src="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/483525933_1214184293403375_1580403919101574731_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeE1M3xntOIR9phYE3tVWhB63YV1IEbOJ9LdhXUgRs4n0qwIQvARvamqMpMTvwMw0-DECsLk7PKpeVmz-9Tx2rnf&_nc_ohc=h1PFs2m3Bw0Q7kNvwHYuQlV&_nc_oc=AdmGgVB0EOVcCyIXeFwDCaUM5jqSpy109JYIw23h_P7Nni3EvvfitWLllzi0xOAA6qw&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=t500k1zf7KJRzpdJPEHqJg&oh=00_AfGopFQodSuGIHou-Ws2pqDqgjPVF9QQFDAx07qmhqzFIQ&oe=67F7DC51"
             alt="Banner"
-            style={{
-              width: "100%",
-              maxHeight: "1000px",
-              objectFit: "cover",
-              borderRadius: "10px",
-            }}
+            style={{ width: "100%", maxHeight: "1000px", objectFit: "cover", borderRadius: "10px" }}
           />
         </div>
-        <div>
-          <div className="align-center">
-            <h2 className="text-center">NEW PRODUCTS</h2>
-            <div className="product-scroll-container">{newprods}</div>
-          </div>
-
-          {hotprods.length > 0 ? (
-            <div className="align-center">
-              <h2 className="text-center">HOT PRODUCTS</h2>
-              <div className="product-scroll-container">{hotprods}</div>
-            </div>
-          ) : (
-            <div />
-          )}
+      <div>
+        <div className="align-center">
+          <h2 className="text-center">NEW PRODUCTS</h2>
+          <div className="product-scroll-container">{newprods}</div>
         </div>
+
+        {hotprods.length > 0 ? (
+          <div className="align-center">
+            <h2 className="text-center">HOT PRODUCTS</h2>
+            <div className="product-scroll-container">{hotprods}</div>
+          </div>
+        ) : (
+          <div />
+        )}
       </div>
     );
   }
