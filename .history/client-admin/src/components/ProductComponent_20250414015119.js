@@ -19,6 +19,7 @@ class Product extends Component {
 
   componentDidMount() {
     this.apiGetProducts(this.state.curPage);
+    // Loading effect
     setTimeout(() => {
       this.setState({ loading: false });
     }, 800);
@@ -76,13 +77,13 @@ class Product extends Component {
                     <i className="fas fa-edit"></i>
                   </button>
                   <button
-                    className="action-btn delete"
+                    className="action-btn view"
                     onClick={(e) => {
                       e.stopPropagation();
-                      this.apiDeleteProduct(item._id);
+                      window.open("/product/" + item._id, "_blank");
                     }}
                   >
-                    <i className="fas fa-trash-alt"></i>
+                    <i className="fas fa-eye"></i>
                   </button>
                 </div>
               </td>
@@ -180,6 +181,7 @@ class Product extends Component {
   }
 
   updateProducts = () => {
+    // Gọi API để lấy danh sách sản phẩm mới nhất
     this.apiGetProducts(this.state.curPage);
   };
 
@@ -195,6 +197,7 @@ class Product extends Component {
     this.setState({ loading: true });
     const config = { headers: { "x-access-token": this.context.token } };
 
+    // Log thông tin request
     console.log("Fetching products for page:", page);
 
     axios
@@ -202,6 +205,7 @@ class Product extends Component {
       .then((res) => {
         const result = res.data;
 
+        // Log dữ liệu nhận được để debug
         console.log("Products received:", result.products);
 
         this.setState({
@@ -216,22 +220,6 @@ class Product extends Component {
       .catch((err) => {
         this.setState({ loading: false });
         console.error("Error loading products:", err);
-      });
-  }
-
-  apiDeleteProduct(id) {
-    if (!window.confirm("Are you sure you want to delete this product?"))
-      return;
-
-    const config = { headers: { "x-access-token": this.context.token } };
-    axios
-      .delete(`/api/admin/products/${id}`, config)
-      .then((res) => {
-        console.log("Deleted:", res.data);
-        this.apiGetProducts(this.state.curPage);
-      })
-      .catch((err) => {
-        console.error("Error deleting product:", err);
       });
   }
 }

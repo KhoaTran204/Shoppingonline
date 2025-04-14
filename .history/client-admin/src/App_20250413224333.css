@@ -4,9 +4,9 @@
   --primary: #000000;
   --primary-dark: #333333;
   --secondary: #6c757d;
-  --success: #8b0000;
+  --success: #28a745;
   --warning: #ffc107;
-  --danger: #8b0000;
+  --danger: #dc3545;
   --info: #17a2b8;
   --light: #f8f9fa;
   --dark: #343a40;
@@ -483,11 +483,11 @@ body {
 
 .action-btn.view {
   background-color: #e8f5e9;
-  color: #dc2626;
+  color: #28a745;
 }
 
 .action-btn.view:hover {
-  background-color: #dc2626;
+  background-color: #28a745;
   color: white;
   box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
 }
@@ -681,7 +681,7 @@ body {
 }
 
 .btn-success:hover {
-  background-color: #8b0000;
+  background-color: #218838;
   box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
   transform: translateY(-2px);
 }
@@ -794,7 +794,7 @@ body {
 }
 
 .form-container .btn-close:hover {
-  color: #8b0000;
+  color: #e74a3b;
   background-color: rgba(231, 74, 59, 0.1);
 }
 
@@ -909,12 +909,12 @@ body {
 }
 
 .form-container .btn-delete {
-  background-color: #8b0000;
+  background-color: #e74a3b;
   color: white;
 }
 
 .form-container .btn-delete:hover:not(:disabled) {
-  background-color: #8b0000;
+  background-color: #d52a1a;
 }
 
 /* Login Page */
@@ -1415,7 +1415,7 @@ body {
 }
 
 .btn-add-new:hover {
-  background-color: #8b0000;
+  background-color: #218838;
 }
 
 .btn-update {
@@ -1442,7 +1442,7 @@ body {
 }
 
 .btn-approve:hover {
-  background-color: #8b0000;
+  background-color: #218838;
 }
 
 .btn-cancel {
@@ -1686,17 +1686,17 @@ tr:hover .table-actions {
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: #8b0000;
+  background: #dc3a3a;
 }
 
 .btn-success {
   background: #8b0000;
-  border: 1px solid #8b0000;
+  border: 1px solid #059669;
   color: white;
 }
 
 .btn-success:hover:not(:disabled) {
-  background: #8b0000;
+  background: #dc3a3a;
 }
 
 /* Loading spinner */
