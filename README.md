@@ -105,6 +105,6 @@ After accessing the website, you can register, log in, view the product list, ad
 - **Name**: Ngo Tien Dung
 - **Contact**: tiendung8a6@gmail.com
 - **Phone**: +84 985872885
-Demo:
-https://3a9e97f0-64c7-40d6-b9ee-31a236bdf842-00-1oapqkhrcxrag.spock.replit.dev/admin
-https://3a9e97f0-64c7-40d6-b9ee-31a236bdf842-00-1oapqkhrcxrag.spock.replit.dev/home
+## Demo
+- https://3a9e97f0-64c7-40d6-b9ee-31a236bdf842-00-1oapqkhrcxrag.spock.replit.dev/admin
+- https://3a9e97f0-64c7-40d6-b9ee-31a236bdf842-00-1oapqkhrcxrag.spock.replit.dev/home
